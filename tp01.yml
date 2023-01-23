@@ -8,7 +8,7 @@
     become: yes
     ansible.builtin.user:
       name: padawan
-      password: $6$v0ekIpBk.coMtXQ2$xnrbmD7jlE5E0fYmo9/F9x/q2YKnSIEKc3Cf.di5CtJH                                                                                                                aZ6Kw6Lp8I2qwJhsyJ929GtQnSGd9rSbHAjk5mf950
+      password: "$6$BIabWsL8CylKmWYK$2nDrFcyBi5xob5Z3Wn1GGCSzINYEgQ2ymOoHzRdDQJEMe8Q3a1OlxSAd9vUtnKOGxcj2UmF5XQi2qc5y9qpwt1"
 
   - name: add padawan sudoer
     become: yes
@@ -66,18 +66,18 @@
     ansible.builtin.user:
       name: asterix
       groups: gaulois
-      password: "$6$mdzdy7Ge1Fo6tlsJ$qMBW0YUIxiOphFJc2zIrAgkyHgQd/kVLF4Y7GDADJGj                                                                                                                vj46PBE3Quohs8z.ci6bOZdtqN2lwFq2Hng.RGdAFG1"
+      password: "$6$mdzdy7Ge1Fo6tlsJ$qMBW0YUIxiOphFJc2zIrAgkyHgQd/kVLF4Y7GDADJGjvj46PBE3Quohs8z.ci6bOZdtqN2lwFq2Hng.RGdAFG1"
 
   - name: create obelix
     become: yes
     ansible.builtin.user:
       name: obelix
       groups: gaulois
-      password: "$6$mdzdy7Ge1Fo6tlsJ$qMBW0YUIxiOphFJc2zIrAgkyHgQd/kVLF4Y7GDADJGj                                                                                                                vj46PBE3Quohs8z.ci6bOZdtqN2lwFq2Hng.RGdAFG1"
+      password: "$6$mdzdy7Ge1Fo6tlsJ$qMBW0YUIxiOphFJc2zIrAgkyHgQd/kVLF4Y7GDADJGjvj46PBE3Quohs8z.ci6bOZdtqN2lwFq2Hng.RGdAFG1"
 
   - name: create cesar
     become: yes
     ansible.builtin.user:
       name: cesar
       groups: romain
-      password: "$6$mdzdy7Ge1Fo6tlsJ$qMBW0YUIxiOphFJc2zIrAgkyHgQd/kVLF4Y7GDADJGj                                                                                                                vj46PBE3Quohs8z.ci6bOZdtqN2lwFq2Hng.RGdAFG1"
+      password: "$6$mdzdy7Ge1Fo6tlsJ$qMBW0YUIxiOphFJc2zIrAgkyHgQd/kVLF4Y7GDADJGjvj46PBE3Quohs8z.ci6bOZdtqN2lwFq2Hng.RGdAFG1"
