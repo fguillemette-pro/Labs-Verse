@@ -35,55 +35,55 @@
     ansible.posix.selinux:
       state: disabled
 
-  - name: create dir
-    become: yes
-    ansible.builtin.file:
-      path: /.top_secret
-      state: directory
-      mode: '0755'
+  # - name: create dir
+  #   become: yes
+  #   ansible.builtin.file:
+  #     path: /.top_secret
+  #     state: directory
+  #     mode: '0755'
 
-  - name: create file
-    become: yes
-    ansible.builtin.copy:
-      dest: /.top_secret/primes_2022.txt
-      content: |
-        'Nope !'
+  # - name: create file
+  #   become: yes
+  #   ansible.builtin.copy:
+  #     dest: /.top_secret/primes_2022.txt
+  #     content: |
+  #       'Nope !'
 
-  - name: add groupe gaulois
-    become: yes
-    ansible.builtin.group:
-      name: gaulois
-      state: present
+  # - name: add groupe gaulois
+  #   become: yes
+  #   ansible.builtin.group:
+  #     name: gaulois
+  #     state: present
 
-  - name: add groupe romain
-    become: yes
-    ansible.builtin.group:
-      name: romain
-      state: present
+  # - name: add groupe romain
+  #   become: yes
+  #   ansible.builtin.group:
+  #     name: romain
+  #     state: present
 
-  - name: create asterix
-    become: yes
-    ansible.builtin.user:
-      name: asterix
-      groups: gaulois
-      password: "$6$mdzdy7Ge1Fo6tlsJ$qMBW0YUIxiOphFJc2zIrAgkyHgQd/kVLF4Y7GDADJGjvj46PBE3Quohs8z.ci6bOZdtqN2lwFq2Hng.RGdAFG1"
+  # - name: create asterix
+  #   become: yes
+  #   ansible.builtin.user:
+  #     name: asterix
+  #     groups: gaulois
+  #     password: "$6$mdzdy7Ge1Fo6tlsJ$qMBW0YUIxiOphFJc2zIrAgkyHgQd/kVLF4Y7GDADJGjvj46PBE3Quohs8z.ci6bOZdtqN2lwFq2Hng.RGdAFG1"
 
-  - name: create obelix
-    become: yes
-    ansible.builtin.user:
-      name: obelix
-      groups: gaulois
-      password: "$6$mdzdy7Ge1Fo6tlsJ$qMBW0YUIxiOphFJc2zIrAgkyHgQd/kVLF4Y7GDADJGjvj46PBE3Quohs8z.ci6bOZdtqN2lwFq2Hng.RGdAFG1"
+  # - name: create obelix
+  #   become: yes
+  #   ansible.builtin.user:
+  #     name: obelix
+  #     groups: gaulois
+  #     password: "$6$mdzdy7Ge1Fo6tlsJ$qMBW0YUIxiOphFJc2zIrAgkyHgQd/kVLF4Y7GDADJGjvj46PBE3Quohs8z.ci6bOZdtqN2lwFq2Hng.RGdAFG1"
 
-  - name: create cesar
-    become: yes
-    ansible.builtin.user:
-      name: cesar
-      groups: romain
-      password: "$6$mdzdy7Ge1Fo6tlsJ$qMBW0YUIxiOphFJc2zIrAgkyHgQd/kVLF4Y7GDADJGjvj46PBE3Quohs8z.ci6bOZdtqN2lwFq2Hng.RGdAFG1"
+  # - name: create cesar
+  #   become: yes
+  #   ansible.builtin.user:
+  #     name: cesar
+  #     groups: romain
+  #     password: "$6$mdzdy7Ge1Fo6tlsJ$qMBW0YUIxiOphFJc2zIrAgkyHgQd/kVLF4Y7GDADJGjvj46PBE3Quohs8z.ci6bOZdtqN2lwFq2Hng.RGdAFG1"
 
-  - name: Install vim packages
-    become: yes
-    yum:
-      name: vim
-      state: present
+  # - name: Install vim packages
+  #   become: yes
+  #   yum:
+  #     name: vim
+  #     state: present
