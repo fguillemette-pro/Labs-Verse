@@ -1,0 +1,27 @@
+all:
+  children:
+    db_servers:
+      hosts:
+        db1:
+          #ansible_host:
+        db2:
+          #ansible_host:
+        db3:
+          #ansible_host:
+        db4:
+          #ansible_host:
+    front_ends:
+      hosts:
+        fe1:
+          #ansible_host:
+        fe2:
+          #ansible_host:
+        fe3:
+          #ansible_host:
+        fe4:
+          #ansible_host:
+    bastion:
+      hosts:
+        bt1:
+          #ansible_host:
+
