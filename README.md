@@ -26,7 +26,7 @@ Récupération des fichiers.
 git clone https://github.com/fguillemette-pro/Labs-Linux.git
 ```
 
-TODO: Ajout des instuctions d'installation via script
+NOTE: Les instructions d'installation seront ajouté dans la documentation
 
 ## Usage
 
