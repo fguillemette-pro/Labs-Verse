@@ -1,0 +1,87 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  remote_user: almalinux
+
+  tasks:
+    - name: create a volume 1
+      openstack.cloud.volume:
+        cloud: openstack
+        state: present
+        availability_zone: nova
+        size: 5
+        display_name: VOL1-{{ item }}
+      with_items: "{{ groups['db_servers'] }}"
+
+    - name: create a volume 2
+      openstack.cloud.volume:
+        cloud: openstack
+        state: present
+        availability_zone: nova
+        size: 5
+        display_name: VOL2-{{ item }}
+      with_items: "{{ groups['db_servers'] }}"
+
+    - name: "Deploy instances db on OpenStack"
+      openstack.cloud.server:
+        cloud: openstack
+        state: present
+        name: "{{ item }}"
+        flavor: s1-2
+        image: "AlmaLinux 9"
+        key_name: bebop-v4
+        auto_ip: false
+        network: Ext-Net
+        security_groups: default
+        wait: true
+      with_items: "{{ groups['db_servers'] }}"
+      register: instance_result
+
+    - name: "Deploy instances fe on OpenStack"
+      openstack.cloud.server:
+        cloud: openstack
+        state: present
+        name: "{{ item }}"
+        flavor: s1-2
+        image: "AlmaLinux 9"
+        key_name: bebop-v4
+        auto_ip: false
+        network: Ext-Net
+        security_groups: default
+        wait: true
+      with_items: "{{ groups['front_ends'] }}"
+      register: instance_result
+
+    - name: "Deploy instances bt on OpenStack"
+      openstack.cloud.server:
+        cloud: openstack
+        state: present
+        name: "{{ item }}"
+        flavor: s1-2
+        image: "AlmaLinux 9"
+        key_name: bebop-v4
+        auto_ip: false
+        network: Ext-Net
+        security_groups: default
+        wait: true
+      with_items: "{{ groups['bastion'] }}"
+      register: instance_result
+
+    - name: "Attach volume 1"
+      openstack.cloud.server_volume:
+        cloud: openstack
+        state: present
+        server: "{{ item }}"
+        volume: VOL1-{{ item }}
+        device: /dev/sdb
+      with_items: "{{ groups['db_servers'] }}"
+
+    - name: "Attach volume 2"
+      openstack.cloud.server_volume:
+        cloud: openstack
+        state: present
+        server: "{{ item }}"
+        volume: VOL2-{{ item }}
+        device: /dev/sdc
+      with_items: "{{ groups['db_servers'] }}"
