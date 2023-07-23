@@ -1,0 +1,42 @@
+---
+- name: BASE VM
+  hosts: all
+  remote_user: almalinux
+
+  tasks:
+  - name: Creation de l'utilisateur padawan
+    become: yes
+    ansible.builtin.user:
+      name: padawan
+      password: "$6$BIabWsL8CylKmWYK$2nDrFcyBi5xob5Z3Wn1GGCSzINYEgQ2ymOoHzRdDQJEMe8Q3a1OlxSAd9vUtnKOGxcj2UmF5XQi2qc5y9qpwt1"
+
+  - name: Ajout de padawan
+    become: yes
+    ansible.builtin.lineinfile:
+      path: /etc/sudoers
+      line: "padawan   ALL=(ALL)       NOPASSWD: ALL"
+      create: yes
+
+  - name: Enable password auth
+    become: yes
+    ansible.builtin.lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: 'PasswordAuthentication no'
+      line: 'PasswordAuthentication yes'
+
+  - name: Stop and Start ssh
+    become: yes
+    ansible.builtin.service:
+      name: sshd
+      state: restarted
+
+  - name: Disable SELinux
+    become: yes
+    ansible.posix.selinux:
+      state: disabled
+
+  - name: Install vim packages
+    become: yes
+    yum:
+      name: vim
+      state: present
